@@ -51,7 +51,8 @@ public class GameStateManager : MonoBehaviour {
 			break;
 		case GameState.Closing:
 		default:
-			Application.LoadLevel("Loading");
+			//Application.LoadLevel("Loading");
+			Application.Quit();
 			break;
 		}
 	}
