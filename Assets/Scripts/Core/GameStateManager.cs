@@ -9,6 +9,12 @@ public enum GameState : int {
 	Closing
 }
 
+public class GameConfig {
+	public string GameName;
+	public float SimulationSpeed;
+	public int CurrentTick;
+}
+
 public class GameStateManager : MonoBehaviour {
 
 	public static GameStateManager Instance = null;
