@@ -26,9 +26,13 @@ public class GameStateManager : MonoBehaviour {
 	}
 
 	public void SetGameState(GameState state) {
-		State = state;
+		SetGameStateInternal (state);
 
 		toggleGameStates ();
+	}
+
+	public void SetGameStateInternal(GameState state) {
+		State = state;
 	}
 
 	private void toggleGameStates() {
@@ -47,7 +51,8 @@ public class GameStateManager : MonoBehaviour {
 			break;
 		case GameState.Closing:
 		default:
-			Application.LoadLevel("Loading");
+			//Application.LoadLevel("Loading");
+			Application.Quit();
 			break;
 		}
 	}
