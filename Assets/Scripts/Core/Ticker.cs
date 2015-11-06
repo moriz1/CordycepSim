@@ -16,6 +16,12 @@ public class Ticker : MonoBehaviour {
 
 	void Awake() {
 		tick = 0;
+
+		if (Game.Current != null) {
+			Debug.Log("loading!");
+			tick = Game.Current.CurrentTick;
+			TicksPerMinute = Game.Current.SimulationSpeed;
+		}
 	}
 	
 	void Start() {

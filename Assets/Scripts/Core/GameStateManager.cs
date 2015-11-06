@@ -18,9 +18,12 @@ public class Game {
 	public int CurrentTick;
 
 	public List<Tickable> Tickables;
-
-	public Game() {
+	
+	public Game(float simSpeed = 6.0f, int currentTick = 0) {
 		Tickables = new List<Tickable> ();
+		SimulationSpeed = simSpeed;
+		CurrentTick = currentTick;
+		GameName = "DefaultName";
 	}
 }
 
@@ -72,7 +75,5 @@ public class GameStateManager : MonoBehaviour {
 		}
 	}
 
-	private void loadingGameInit() {
-		SaveLoader.Load ();
-	}
+
 }
