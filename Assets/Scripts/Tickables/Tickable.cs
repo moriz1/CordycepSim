@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class Tickable : MonoBehaviour {
 	public static int ID = -1;
 	protected int id;
 
-	protected string tickableName;
+	protected string tickableName = "Tickable";
 
 	void Start() {
 		ID++;
 		id = ID;
-		tickableName = "Tickable";
 	}
 
 	void OnEnable() {
@@ -31,5 +31,9 @@ public class Tickable : MonoBehaviour {
 
 	public virtual void OnTickAction(float speed) {
 		TickTest (speed);
+	}
+
+	void OnApplicationQuit() {
+		SaveLoader.Save (tickableName + id);
 	}
 }

@@ -9,6 +9,14 @@ public class LoadingScreen : MonoBehaviour {
 
 	IEnumerator FinishLoadingStartGame() {
 		yield return new WaitForSeconds(3.0f);
-		Application.LoadLevel ("Game");
+		SaveLoader.CreateGame();
+
+		foreach (Game g in SaveLoader.saves) {
+			Game.Current = g;
+		}
+		//Application.LoadLevel ("Game");
+		if (GameStateManager.Instance != null) {
+			GameStateManager.Instance.SetGameState(GameState.InGame);
+		}
 	}
 }

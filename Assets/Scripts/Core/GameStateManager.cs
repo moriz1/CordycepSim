@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum GameState : int {
 	MainMenu = 0,
@@ -7,6 +8,20 @@ public enum GameState : int {
 	InGame,
 	Paused,
 	Closing
+}
+
+[System.Serializable]
+public class Game {
+	public static Game Current;
+	public string GameName;
+	public float TicksPerMinute;
+	public int CurrentTick;
+	
+	public Game(float ticksPerMinute = 6.0f, int currentTick = 0) {
+		TicksPerMinute = ticksPerMinute;
+		CurrentTick = currentTick;
+		GameName = "DefaultName";
+	}
 }
 
 public class GameStateManager : MonoBehaviour {
@@ -56,4 +71,6 @@ public class GameStateManager : MonoBehaviour {
 			break;
 		}
 	}
+
+
 }
