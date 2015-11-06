@@ -9,7 +9,7 @@ public class LoadingScreen : MonoBehaviour {
 
 	IEnumerator FinishLoadingStartGame() {
 		yield return new WaitForSeconds(3.0f);
-		SaveLoader.Load ();
+		SaveLoader.CreateGame();
 
 		foreach (Game g in SaveLoader.saves) {
 			Game.Current = g;

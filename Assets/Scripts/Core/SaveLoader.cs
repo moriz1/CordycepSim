@@ -24,6 +24,27 @@ public static class SaveLoader {
 		file.Close();
 	}
 
+	public static void CreateGame() {
+		if (Application.isEditor || Application.isWebPlayer) {
+			if (!File.Exists (Application.dataPath + "/SaveData/GameConfig.xml")) {
+				Game.Current = new Game(6.0f, 0);
+				Save();
+			}
+			else {
+				Load();
+			}
+		}
+		else {
+			if (File.Exists (Application.persistentDataPath + "/GameConfig.cordy")) {
+				Game.Current = new Game(6.0f, 0);
+				Save();
+			}
+			else {
+				Load();
+			}
+		}
+	}
+
 	public static void Load(string name = "GameConfig") {
 
 		BinaryFormatter bf;

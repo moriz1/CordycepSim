@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.IO;
 
 public delegate void TickAction (float speed);
 
@@ -22,6 +23,9 @@ public class Ticker : MonoBehaviour {
 			tick = Game.Current.CurrentTick;
 			TicksPerMinute = Game.Current.TicksPerMinute;
 		}
+
+		//Initialize Tickables!
+
 	}
 	
 	void Start() {
@@ -41,6 +45,23 @@ public class Ticker : MonoBehaviour {
 			tick++;
 		}
 	}
+
+//	private void InitTickables() {
+//		int foundTickables = 0;
+//
+//		int i = 0;
+//
+//		for (;;) {
+//			if (Application.isEditor || Application.isWebPlayer) {
+//				if (File.Exists (Application.dataPath + "/SaveData/Tickable" + i + ".xml")) {
+//
+//				}
+//				else {
+//					break;
+//				}
+//			}
+//		}
+//	}
 
 	void OnApplicationQuit() {
 		Game.Current.CurrentTick = Tick;

@@ -6,7 +6,6 @@ public class TickableInheritanceTest : Tickable {
 	void Start() {
 		ID++;
 		id = ID;
-		tickableName = "TickableInheritanceTest";
 	}
 
 	private void OtherTickTest(float speed) {

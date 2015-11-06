@@ -6,12 +6,11 @@ public class Tickable : MonoBehaviour {
 	public static int ID = -1;
 	protected int id;
 
-	protected string tickableName;
+	protected string tickableName = "Tickable";
 
 	void Start() {
 		ID++;
 		id = ID;
-		tickableName = "Tickable";
 	}
 
 	void OnEnable() {
