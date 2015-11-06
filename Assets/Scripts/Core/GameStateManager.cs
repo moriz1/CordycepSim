@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum GameState : int {
 	MainMenu = 0,
@@ -9,10 +10,18 @@ public enum GameState : int {
 	Closing
 }
 
-public class GameConfig {
+[System.Serializable]
+public class Game {
+	public static Game Current;
 	public string GameName;
 	public float SimulationSpeed;
 	public int CurrentTick;
+
+	public List<Tickable> Tickables;
+
+	public Game() {
+		Tickables = new List<Tickable> ();
+	}
 }
 
 public class GameStateManager : MonoBehaviour {
@@ -61,5 +70,9 @@ public class GameStateManager : MonoBehaviour {
 			Application.Quit();
 			break;
 		}
+	}
+
+	private void loadingGameInit() {
+		SaveLoader.Load ();
 	}
 }

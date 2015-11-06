@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
 public class Tickable : MonoBehaviour {
 	public static int ID = -1;
 	protected int id;

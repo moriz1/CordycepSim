@@ -7,8 +7,8 @@ using System.IO;
 
 [XmlRoot("CordycepSimRoot")]
 public class XMLContainer {
-	[XmlArray("GameConfigs"), XmlArrayItem("GameConfig")]
-	public GameConfig[] GameConfigs;
+	[XmlArray("CSObjects"), XmlArrayItem("CSObject")]
+	public GameObject[] CSObjects;
 
 	public static XMLContainer LoadData(string path) {
 		var serializer = new XmlSerializer(typeof(XMLContainer));
