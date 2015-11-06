@@ -14,14 +14,14 @@ public enum GameState : int {
 public class Game {
 	public static Game Current;
 	public string GameName;
-	public float SimulationSpeed;
+	public float TicksPerMinute;
 	public int CurrentTick;
 
 	public List<Tickable> Tickables;
 	
-	public Game(float simSpeed = 6.0f, int currentTick = 0) {
+	public Game(float ticksPerMinute = 6.0f, int currentTick = 0) {
 		Tickables = new List<Tickable> ();
-		SimulationSpeed = simSpeed;
+		TicksPerMinute = ticksPerMinute;
 		CurrentTick = currentTick;
 		GameName = "DefaultName";
 	}

@@ -33,4 +33,8 @@ public class Tickable : MonoBehaviour {
 	public virtual void OnTickAction(float speed) {
 		TickTest (speed);
 	}
+
+	void OnApplicationQuit() {
+		Game.Current.Tickables.Add (this);
+	}
 }

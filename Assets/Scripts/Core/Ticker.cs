@@ -20,7 +20,7 @@ public class Ticker : MonoBehaviour {
 		if (Game.Current != null) {
 			Debug.Log("loading!");
 			tick = Game.Current.CurrentTick;
-			TicksPerMinute = Game.Current.SimulationSpeed;
+			TicksPerMinute = Game.Current.TicksPerMinute;
 		}
 	}
 	
@@ -40,5 +40,11 @@ public class Ticker : MonoBehaviour {
 
 			tick++;
 		}
+	}
+
+	void OnApplicationQuit() {
+		Game.Current.CurrentTick = Tick;
+		Game.Current.TicksPerMinute = TicksPerMinute;
+		SaveLoader.Save ();
 	}
 }
