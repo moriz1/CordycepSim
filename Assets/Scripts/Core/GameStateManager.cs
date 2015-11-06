@@ -16,11 +16,8 @@ public class Game {
 	public string GameName;
 	public float TicksPerMinute;
 	public int CurrentTick;
-
-	public List<Tickable> Tickables;
 	
 	public Game(float ticksPerMinute = 6.0f, int currentTick = 0) {
-		Tickables = new List<Tickable> ();
 		TicksPerMinute = ticksPerMinute;
 		CurrentTick = currentTick;
 		GameName = "DefaultName";

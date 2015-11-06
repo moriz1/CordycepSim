@@ -7,7 +7,7 @@ using System.IO;
 public static class SaveLoader {
 	public static List<Game> saves = new List<Game>();
 
-	public static void Save() {
+	public static void Save(string name = "GameConfig") {
 		saves.Clear ();
 		saves.Add(Game.Current);
 		BinaryFormatter bf = new BinaryFormatter();
@@ -15,24 +15,24 @@ public static class SaveLoader {
 		FileStream file;
 
 		if (Application.isEditor || Application.isWebPlayer) {
-			file = File.Create (Application.dataPath + "/saves.xml");
+			file = File.Create (Application.dataPath + "/SaveData/" + name + ".xml");
 		}
 		else {
-			file = File.Create (Application.persistentDataPath + "/saves.cordy");
+			file = File.Create (Application.persistentDataPath + "/" + name + ".cordy");
 		}
 		bf.Serialize(file, SaveLoader.saves);
 		file.Close();
 	}
 
-	public static void Load() {
+	public static void Load(string name = "GameConfig") {
 
 		BinaryFormatter bf;
 		FileStream file;
 
 		if (Application.isEditor || Application.isWebPlayer) {
-			if (File.Exists (Application.dataPath + "/saves.xml")) {
+			if (File.Exists (Application.dataPath + "/SaveData/" + name + ".xml")) {
 				bf = new BinaryFormatter ();
-				file = File.Open (Application.dataPath + "/saves.xml", FileMode.Open);
+				file = File.Open (Application.dataPath + "/SaveData/" + name + ".xml", FileMode.Open);
 				SaveLoader.saves = (List<Game>)bf.Deserialize (file);
 				file.Close ();
 			}
@@ -42,9 +42,9 @@ public static class SaveLoader {
 			}
 		}
 		else {
-			if (File.Exists (Application.persistentDataPath + "/saves.cordy")) {
+			if (File.Exists (Application.persistentDataPath + "/" + name + ".cordy")) {
 				bf = new BinaryFormatter ();
-				file = File.Open (Application.persistentDataPath + "/saves.cordy", FileMode.Open);
+				file = File.Open (Application.persistentDataPath + "/" + name + ".cordy", FileMode.Open);
 				SaveLoader.saves = (List<Game>)bf.Deserialize (file);
 				file.Close ();
 			}
