@@ -34,6 +34,6 @@ public class Tickable : MonoBehaviour {
 	}
 
 	void OnApplicationQuit() {
-		SaveLoader.Save (tickableName + id);
+		//SaveLoader.Save (tickableName + id);
 	}
 }
