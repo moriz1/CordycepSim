@@ -46,26 +46,11 @@ public class Ticker : MonoBehaviour {
 		}
 	}
 
-//	private void InitTickables() {
-//		int foundTickables = 0;
-//
-//		int i = 0;
-//
-//		for (;;) {
-//			if (Application.isEditor || Application.isWebPlayer) {
-//				if (File.Exists (Application.dataPath + "/SaveData/Tickable" + i + ".xml")) {
-//
-//				}
-//				else {
-//					break;
-//				}
-//			}
-//		}
-//	}
-
 	void OnApplicationQuit() {
-		Game.Current.CurrentTick = Tick;
-		Game.Current.TicksPerMinute = TicksPerMinute;
-		SaveLoader.Save ();
+		if (Game.Current != null) {
+			Game.Current.CurrentTick = Tick;
+			Game.Current.TicksPerMinute = TicksPerMinute;
+			SaveLoader.Save ();
+		}
 	}
 }

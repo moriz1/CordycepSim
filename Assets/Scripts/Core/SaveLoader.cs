@@ -7,7 +7,7 @@ using System.IO;
 public static class SaveLoader {
 	public static List<Game> saves = new List<Game>();
 
-	public static void Save(string name = "GameConfig") {
+	public static void Save() {
 		saves.Clear ();
 		saves.Add(Game.Current);
 		BinaryFormatter bf = new BinaryFormatter();
@@ -15,10 +15,10 @@ public static class SaveLoader {
 		FileStream file;
 
 		if (Application.isEditor || Application.isWebPlayer) {
-			file = File.Create (Application.dataPath + "/SaveData/" + name + ".xml");
+			file = File.Create (Application.dataPath + "/SaveData/GameConfig.xml");
 		}
 		else {
-			file = File.Create (Application.persistentDataPath + "/" + name + ".cordy");
+			file = File.Create (Application.persistentDataPath + "/GameConfig.cordy");
 		}
 		bf.Serialize(file, SaveLoader.saves);
 		file.Close();
@@ -45,15 +45,15 @@ public static class SaveLoader {
 		}
 	}
 
-	public static void Load(string name = "GameConfig") {
+	public static void Load() {
 
 		BinaryFormatter bf;
 		FileStream file;
 
 		if (Application.isEditor || Application.isWebPlayer) {
-			if (File.Exists (Application.dataPath + "/SaveData/" + name + ".xml")) {
+			if (File.Exists (Application.dataPath + "/SaveData/GameConfig.xml")) {
 				bf = new BinaryFormatter ();
-				file = File.Open (Application.dataPath + "/SaveData/" + name + ".xml", FileMode.Open);
+				file = File.Open (Application.dataPath + "/SaveData/GameConfig.xml", FileMode.Open);
 				SaveLoader.saves = (List<Game>)bf.Deserialize (file);
 				file.Close ();
 			}
@@ -63,9 +63,9 @@ public static class SaveLoader {
 			}
 		}
 		else {
-			if (File.Exists (Application.persistentDataPath + "/" + name + ".cordy")) {
+			if (File.Exists (Application.persistentDataPath + "/GameConfig.cordy")) {
 				bf = new BinaryFormatter ();
-				file = File.Open (Application.persistentDataPath + "/" + name + ".cordy", FileMode.Open);
+				file = File.Open (Application.persistentDataPath + "/GameConfig.cordy", FileMode.Open);
 				SaveLoader.saves = (List<Game>)bf.Deserialize (file);
 				file.Close ();
 			}

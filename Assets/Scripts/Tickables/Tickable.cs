@@ -2,38 +2,31 @@
 using System.Collections;
 
 [System.Serializable]
-public class Tickable : MonoBehaviour {
-	public static int ID = -1;
-	protected int id;
+public class Tickable {
+	//protected static int counter = 0;
 
 	protected string tickableName = "Tickable";
 
-	void Start() {
-		ID++;
-		id = ID;
+	public int ID { get; set; }
+	public string TickableName { get { return tickableName; } }
+
+	public Tickable() {
+		//this.ID = System.Threading.Interlocked.Increment (ref counter);
 	}
 
-	void OnEnable() {
-		Ticker.OnTick += OnTickAction;
-	}
-
-	void OnDisable() {
-		Ticker.OnTick -= OnTickAction;
+	public Tickable(string n) : this() {
+		tickableName = n;
 	}
 
 	private void TickTest(float speed) {
-		Debug.Log ("TickTest Complete on " + tickableName + " ID: " + id + " with speed: " + speed);
+		Debug.Log ("TickTest Complete on " + tickableName + " ID: " + ID + " with speed: " + speed);
 
 		if (tickableName != "Tickable") {
-			Debug.LogWarning ("ID: " + id + " Make sure to overload OnTickAction!");
+			Debug.LogWarning ("ID: " + ID + " Make sure to overload OnTickAction!");
 		}
 	}
 
 	public virtual void OnTickAction(float speed) {
 		TickTest (speed);
-	}
-
-	void OnApplicationQuit() {
-		SaveLoader.Save (tickableName + id);
 	}
 }
