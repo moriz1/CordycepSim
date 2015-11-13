@@ -30,6 +30,8 @@ public class GameStateManager : MonoBehaviour {
 
 	public GameState State { get; private set; }
 
+	public List<Tickable> Tickables = new List<Tickable>();
+
 	void Awake() {
 		if (Instance == null) {
 			Instance = this;

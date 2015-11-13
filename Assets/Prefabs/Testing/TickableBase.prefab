@@ -36,9 +36,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 184368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a5c94d44f96640af985e90381b51d51, type: 3}
+  m_Script: {fileID: 11500000, guid: f137723d7b8484de0abaeca2ea076332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Tickable
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
